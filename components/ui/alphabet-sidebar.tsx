@@ -37,7 +37,7 @@ export function AlphabetSidebar({ letters, idPrefix }: AlphabetSidebarProps) {
     <>
       <div
         ref={barRef}
-        className="fixed right-1 top-1/2 -translate-y-1/2 z-10 flex flex-col items-center py-1 select-none touch-none"
+        className="fixed right-0.5 top-1/2 -translate-y-1/2 z-10 flex flex-col items-center py-1 select-none touch-none"
         onTouchMove={handleTouch}
         onTouchStart={handleTouch}
       >
@@ -47,7 +47,7 @@ export function AlphabetSidebar({ letters, idPrefix }: AlphabetSidebarProps) {
             data-letter={letter}
             type="button"
             onClick={() => scrollToLetter(letter)}
-            className={`w-7 h-7 flex items-center justify-center text-[11px] font-bold rounded-full transition-colors ${
+            className={`w-6 h-6 flex items-center justify-center text-[10px] font-bold rounded-full transition-colors ${
               activeLetter === letter
                 ? 'bg-[var(--color-primary)] text-white scale-125'
                 : 'text-[var(--color-primary)]'

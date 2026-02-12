@@ -35,7 +35,7 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 bg-[var(--color-background)]">
+    <main className="min-h-dvh flex items-center justify-center px-4 bg-[var(--color-background)]">
       <div className="w-full max-w-sm">
         <h1 className="text-2xl font-bold text-center mb-6">Nouveau mot de passe</h1>
 

@@ -249,7 +249,7 @@ export default function AttendPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen flex items-center justify-center px-4">
+      <main className="min-h-dvh flex items-center justify-center px-4">
         <div className="flex flex-col items-center gap-3">
           <Spinner className="h-8 w-8 text-[var(--color-primary)]" />
           <p className="text-sm text-[var(--color-text-secondary)]">Chargement...</p>
@@ -260,7 +260,7 @@ export default function AttendPage() {
 
   if (!session) {
     return (
-      <main className="min-h-screen flex items-center justify-center px-4">
+      <main className="min-h-dvh flex items-center justify-center px-4">
         <EmptyState
           title="Aucune séance ouverte pour le moment"
           description="Revenez plus tard ou contactez le responsable."
@@ -275,7 +275,7 @@ export default function AttendPage() {
   const totalMembers = players.length
 
   return (
-    <main className="min-h-screen bg-[var(--color-background)] px-4 py-6 max-w-lg md:max-w-2xl mx-auto">
+    <main className="min-h-dvh bg-[var(--color-background)] px-4 pt-4 pb-8 safe-area-top max-w-lg md:max-w-2xl mx-auto">
       {/* Back link */}
       <Link
         href="/"

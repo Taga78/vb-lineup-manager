@@ -14,7 +14,7 @@ export default async function SupabaseDebugPage() {
     .limit(10)
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-4">
+    <main className="min-h-dvh flex flex-col items-center justify-center px-4">
       <h1 className="text-2xl font-bold mb-4">
         Test connexion Supabase
       </h1>

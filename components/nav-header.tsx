@@ -45,8 +45,8 @@ export function NavHeader() {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--color-surface)] border-t border-[var(--color-border)] safe-area-bottom">
-      <div className="flex items-center justify-around h-16 max-w-lg md:max-w-2xl mx-auto">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--color-surface)] border-t border-[var(--color-border)]" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
+      <div className="flex items-center justify-around h-14 max-w-lg md:max-w-2xl mx-auto">
         {navItems.map((item) => {
           const isActive = item.href === '/staff'
             ? pathname === '/staff'

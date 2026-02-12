@@ -11,7 +11,7 @@ export default function GlobalError({
   reset: () => void
 }) {
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 bg-[var(--color-background)]">
+    <main className="min-h-dvh flex items-center justify-center px-4 bg-[var(--color-background)]">
       <Card className="max-w-sm w-full text-center">
         <div className="w-12 h-12 rounded-full bg-[var(--color-danger)]/10 flex items-center justify-center mx-auto mb-3">
           <svg className="w-6 h-6 text-[var(--color-danger)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
