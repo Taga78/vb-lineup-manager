@@ -1,26 +1,193 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-border: #e2e8f0;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --skill-1: #ef4444;
+  --skill-2: #f97316;
+  --skill-3: #eab308;
+  --skill-4: #22c55e;
+  --skill-5: #3b82f6;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-primary: #3b82f6;
+    --color-primary-dark: #2563eb;
+    --color-background: #0f172a;
+    --color-surface: #1e293b;
+    --color-text: #f1f5f9;
+    --color-text-secondary: #94a3b8;
+    --color-border: #334155;
+    --color-success: #22c55e;
+    --color-warning: #f59e0b;
+    --color-danger: #ef4444;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Skill slider ───────────────────────────────── */
+.skill-slider {
+  --track-h: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: var(--track-h);
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Webkit track */
+.skill-slider::-webkit-slider-runnable-track {
+  height: var(--track-h);
+  border-radius: 6px;
+  background:
+    linear-gradient(
+      to right,
+      var(--skill-1) 0%, var(--skill-1) 20%,
+      var(--skill-2) 20%, var(--skill-2) 40%,
+      var(--skill-3) 40%, var(--skill-3) 60%,
+      var(--skill-4) 60%, var(--skill-4) 80%,
+      var(--skill-5) 80%, var(--skill-5) 100%
+    );
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Webkit thumb */
+.skill-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-top: calc((var(--track-h) - 28px) / 2);
+  background: var(--skill-current, var(--color-primary));
+  border: 3.5px solid #fff;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  cursor: grab;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.skill-slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+  transform: scale(1.12);
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Firefox track */
+.skill-slider::-moz-range-track {
+  height: var(--track-h);
+  border-radius: 6px;
+  background:
+    linear-gradient(
+      to right,
+      var(--skill-1) 0%, var(--skill-1) 20%,
+      var(--skill-2) 20%, var(--skill-2) 40%,
+      var(--skill-3) 40%, var(--skill-3) 60%,
+      var(--skill-4) 60%, var(--skill-4) 80%,
+      var(--skill-5) 80%, var(--skill-5) 100%
+    );
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+  border: none;
+}
+
+/* Firefox thumb */
+.skill-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--skill-current, var(--color-primary));
+  border: 3.5px solid #fff;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  cursor: grab;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.skill-slider:active::-moz-range-thumb {
+  cursor: grabbing;
+  transform: scale(1.12);
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Focus ring */
+.skill-slider:focus-visible::-webkit-slider-thumb {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.skill-slider:focus-visible::-moz-range-thumb {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ── Print ───────────────────────────────────────── */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  nav {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+}
+
+/* ── Player selected pulse ────────────────────────── */
+@keyframes player-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--color-primary);
+  }
+  50% {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 25%, transparent);
+  }
+}
+
+.player-selected {
+  animation: player-pulse 1.5s ease-in-out infinite;
+}
+
+/* ── Toast slide-in ───────────────────────────────── */
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
