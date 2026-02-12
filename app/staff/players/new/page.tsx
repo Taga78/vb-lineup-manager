@@ -7,7 +7,7 @@ export default function NewPlayerPage() {
       <div className="mb-6">
         <Link
           href="/staff/players"
-          className="inline-flex items-center gap-1 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors min-h-[44px]"
+          className="inline-flex items-center gap-1 text-sm text-(--color-text-secondary) hover:text-(--color-text) transition-colors min-h-[44px]"
         >
           &larr; Retour aux joueurs
         </Link>

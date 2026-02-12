@@ -274,7 +274,7 @@ export function AttendanceBoard({ sessionId }: AttendanceBoardProps) {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-8">
-        <Spinner className="h-6 w-6 text-[var(--color-primary)]" />
+        <Spinner className="h-6 w-6 text-(--color-primary)" />
       </div>
     )
   }
@@ -309,11 +309,11 @@ export function AttendanceBoard({ sessionId }: AttendanceBoardProps) {
                 <Card
                   key={attendance.player_id}
                   padding="sm"
-                  className={`border-[var(--color-success)]/30 bg-[var(--color-success)]/5 ${isPendingPlayer ? 'opacity-70' : ''}`}
+                  className={`border-(--color-success)/30 bg-(--color-success)/5 ${isPendingPlayer ? 'opacity-70' : ''}`}
                 >
                   <div className="flex items-center gap-3">
                     {/* Green dot indicator */}
-                    <div className="w-2.5 h-2.5 rounded-full bg-[var(--color-success)] flex-shrink-0" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-(--color-success) flex-shrink-0" />
 
                     {/* Player info */}
                     <div className="flex-1 min-w-0">
@@ -340,7 +340,7 @@ export function AttendanceBoard({ sessionId }: AttendanceBoardProps) {
                         onClick={() =>
                           setEditingGuestId(isEditing ? null : attendance.player_id)
                         }
-                        className="p-2 text-gray-400 hover:text-[var(--color-primary)] transition-colors flex-shrink-0"
+                        className="p-2 text-gray-400 hover:text-(--color-primary) transition-colors flex-shrink-0"
                         aria-label={`Modifier les skills de ${attendance.player_name}`}
                       >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -353,7 +353,7 @@ export function AttendanceBoard({ sessionId }: AttendanceBoardProps) {
                     <button
                       onClick={() => handleCheckOut(attendance.player_id)}
                       disabled={isPendingPlayer}
-                      className="p-2 text-gray-400 hover:text-[var(--color-danger)] transition-colors disabled:opacity-50 flex-shrink-0"
+                      className="p-2 text-gray-400 hover:text-(--color-danger) transition-colors disabled:opacity-50 flex-shrink-0"
                       aria-label={`Retirer ${attendance.player_name}`}
                     >
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -395,26 +395,26 @@ export function AttendanceBoard({ sessionId }: AttendanceBoardProps) {
       ) : (
         <div>
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-semibold text-[var(--color-text-secondary)]">
+            <h3 className="text-sm font-semibold text-(--color-text-secondary)">
               Ajouter un joueur
             </h3>
             <button
               onClick={() => { setShowAddPanel(false); setShowGuestForm(false) }}
-              className="text-sm text-[var(--color-primary)] hover:text-[var(--color-primary-dark)]"
+              className="text-sm text-(--color-primary) hover:text-(--color-primary-dark)"
             >
               Fermer
             </button>
           </div>
 
           {/* Tabs: Membres / Invités */}
-          <div className="flex gap-1 mb-3 bg-[var(--color-border)] rounded-lg p-0.5">
+          <div className="flex gap-1 mb-3 bg-(--color-border) rounded-lg p-0.5">
             <button
               type="button"
               onClick={() => { setAddTab('members'); setShowGuestForm(false) }}
               className={`flex-1 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
                 addTab === 'members'
-                  ? 'bg-[var(--color-surface)] text-[var(--color-text)] shadow-sm'
-                  : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text)]'
+                  ? 'bg-(--color-surface) text-(--color-text) shadow-sm'
+                  : 'text-(--color-text-secondary) hover:text-(--color-text)'
               }`}
             >
               Membres ({absentMembers.length})
@@ -424,8 +424,8 @@ export function AttendanceBoard({ sessionId }: AttendanceBoardProps) {
               onClick={() => setAddTab('guests')}
               className={`flex-1 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
                 addTab === 'guests'
-                  ? 'bg-[var(--color-surface)] text-[var(--color-text)] shadow-sm'
-                  : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text)]'
+                  ? 'bg-(--color-surface) text-(--color-text) shadow-sm'
+                  : 'text-(--color-text-secondary) hover:text-(--color-text)'
               }`}
             >
               Invités ({absentGuests.length})
@@ -436,7 +436,7 @@ export function AttendanceBoard({ sessionId }: AttendanceBoardProps) {
           {addTab === 'members' && (
             <>
               {absentMembers.length === 0 ? (
-                <p className="text-sm text-[var(--color-text-secondary)] text-center py-4">
+                <p className="text-sm text-(--color-text-secondary) text-center py-4">
                   Tous les membres sont présents
                 </p>
               ) : (
@@ -494,7 +494,7 @@ export function AttendanceBoard({ sessionId }: AttendanceBoardProps) {
                       onChange={(e) => setGuestName(e.target.value)}
                       maxLength={100}
                       placeholder="Prénom Nom"
-                      className="w-full px-3 py-2 border border-[var(--color-border)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                      className="w-full px-3 py-2 border border-(--color-border) rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-(--color-primary)"
                     />
                   </div>
 
@@ -509,8 +509,8 @@ export function AttendanceBoard({ sessionId }: AttendanceBoardProps) {
                           onClick={() => setGuestGender(g)}
                           className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
                             guestGender === g
-                              ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
-                              : 'bg-[var(--color-surface)] text-[var(--color-text)] border-[var(--color-border)] hover:opacity-80'
+                              ? 'bg-(--color-primary) text-white border-(--color-primary)'
+                              : 'bg-(--color-surface) text-(--color-text) border-(--color-border) hover:opacity-80'
                           }`}
                         >
                           {g === 'M' ? 'Homme' : 'Femme'}
@@ -531,8 +531,8 @@ export function AttendanceBoard({ sessionId }: AttendanceBoardProps) {
                             onClick={() => setGuestLevel(key)}
                             className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
                               guestLevel === key
-                                ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
-                                : 'bg-[var(--color-surface)] text-[var(--color-text)] border-[var(--color-border)] hover:opacity-80'
+                                ? 'bg-(--color-primary) text-white border-(--color-primary)'
+                                : 'bg-(--color-surface) text-(--color-text) border-(--color-border) hover:opacity-80'
                             }`}
                           >
                             {val.label}
@@ -590,7 +590,7 @@ function PlayerCheckInCard({
   return (
     <Card
       padding="sm"
-      className={`cursor-pointer hover:border-[var(--color-success)]/50 transition-colors ${
+      className={`cursor-pointer hover:border-(--color-success)/50 transition-colors ${
         isPending ? 'opacity-70' : ''
       }`}
       onClick={() => onCheckIn(player.id)}

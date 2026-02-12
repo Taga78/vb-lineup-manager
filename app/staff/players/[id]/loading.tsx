@@ -8,7 +8,7 @@ export default function PlayerDetailLoading() {
       {/* Title */}
       <Skeleton className="h-8 w-48" />
       {/* Form card */}
-      <div className="bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] p-4 space-y-4">
+      <div className="bg-(--color-surface) rounded-xl border border-(--color-border) p-4 space-y-4">
         <Skeleton className="h-10 w-full" />
         <Skeleton className="h-10 w-full" />
         {/* Radar + score */}

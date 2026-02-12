@@ -28,7 +28,7 @@ export default async function SessionDetailPage({
       <div className="mb-6">
         <Link
           href="/staff/sessions"
-          className="inline-flex items-center gap-1 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors min-h-[44px]"
+          className="inline-flex items-center gap-1 text-sm text-(--color-text-secondary) hover:text-(--color-text) transition-colors min-h-[44px]"
         >
           &larr; Retour aux seances
         </Link>
@@ -41,7 +41,7 @@ export default async function SessionDetailPage({
             {formatDateFr(session.date)}
           </h1>
           {session.label && (
-            <p className="mt-1 text-[var(--color-text-secondary)]">
+            <p className="mt-1 text-(--color-text-secondary)">
               {session.label}
             </p>
           )}
@@ -55,25 +55,25 @@ export default async function SessionDetailPage({
       <Card className="mb-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-xs text-[var(--color-text-secondary)] uppercase tracking-wide">
+            <p className="text-xs text-(--color-text-secondary) uppercase tracking-wide">
               Terrains
             </p>
             <p className="text-lg font-semibold">{session.nb_courts_planned}</p>
           </div>
           <div>
-            <p className="text-xs text-[var(--color-text-secondary)] uppercase tracking-wide">
+            <p className="text-xs text-(--color-text-secondary) uppercase tracking-wide">
               Taille equipe
             </p>
             <p className="text-lg font-semibold">{session.preferred_team_size}</p>
           </div>
           <div>
-            <p className="text-xs text-[var(--color-text-secondary)] uppercase tracking-wide">
+            <p className="text-xs text-(--color-text-secondary) uppercase tracking-wide">
               Presents
             </p>
             <p className="text-lg font-semibold">{session.attendance_count}</p>
           </div>
           <div>
-            <p className="text-xs text-[var(--color-text-secondary)] uppercase tracking-wide">
+            <p className="text-xs text-(--color-text-secondary) uppercase tracking-wide">
               Statut
             </p>
             <p className="text-lg font-semibold">

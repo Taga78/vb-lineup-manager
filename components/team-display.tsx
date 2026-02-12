@@ -212,7 +212,7 @@ export function TeamDisplay({ sessionId, teams: initialTeams }: TeamDisplayProps
         {editMode && (
           <div className="mt-2 flex items-center gap-2">
             <Badge variant="info">Mode édition</Badge>
-            <span className="text-xs text-[var(--color-text-secondary)]">
+            <span className="text-xs text-(--color-text-secondary)">
               {selectedPlayer ? 'Tapez un autre joueur pour échanger' : 'Tapez un joueur pour le sélectionner'}
             </span>
           </div>
@@ -275,9 +275,9 @@ export function TeamDisplay({ sessionId, teams: initialTeams }: TeamDisplayProps
                             key={player.id}
                             className={`flex items-center justify-between text-sm rounded-md px-1.5 py-1 transition-all ${
                               editMode
-                                ? `cursor-pointer hover:bg-[var(--color-border)]/50 ${
+                                ? `cursor-pointer hover:bg-(--color-border)/50 ${
                                     selected
-                                      ? 'player-selected ring-2 ring-[var(--color-primary)] bg-[var(--color-primary)]/10'
+                                      ? 'player-selected ring-2 ring-(--color-primary) bg-(--color-primary)/10'
                                       : ''
                                   }`
                                 : ''

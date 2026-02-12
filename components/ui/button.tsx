@@ -10,10 +10,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<ButtonVariant, string> = {
-  primary: 'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] active:bg-[var(--color-primary-dark)]',
-  secondary: 'bg-[var(--color-border)] text-[var(--color-text)] hover:bg-gray-200 active:bg-gray-300',
-  danger: 'bg-[var(--color-danger)] text-white hover:bg-red-700 active:bg-red-800',
-  ghost: 'bg-transparent text-[var(--color-text-secondary)] hover:bg-[var(--color-border)] active:bg-gray-200',
+  primary: 'bg-(--color-primary) text-white hover:bg-(--color-primary-dark) active:bg-(--color-primary-dark)',
+  secondary: 'bg-(--color-border) text-(--color-text) hover:bg-gray-200 active:bg-gray-300',
+  danger: 'bg-(--color-danger) text-white hover:bg-red-700 active:bg-red-800',
+  ghost: 'bg-transparent text-(--color-text-secondary) hover:bg-(--color-border) active:bg-gray-200',
 }
 
 const sizes: Record<ButtonSize, string> = {
@@ -27,7 +27,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     <button
       ref={ref}
       disabled={disabled || loading}
-      className={`inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${variants[variant]} ${sizes[size]} ${className}`}
+      className={`inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-(--color-primary) focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${variants[variant]} ${sizes[size]} ${className}`}
       {...props}
     >
       {loading && (

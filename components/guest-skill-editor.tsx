@@ -35,15 +35,15 @@ export function GuestSkillEditor({ playerId, initialSkills, onClose, onSaved }: 
   }
 
   return (
-    <div className="mt-2 p-3 bg-[var(--color-background)] rounded-lg border border-[var(--color-border)]">
+    <div className="mt-2 p-3 bg-(--color-background) rounded-lg border border-(--color-border)">
       {error && (
-        <p className="text-xs text-[var(--color-danger)] mb-2">{error}</p>
+        <p className="text-xs text-(--color-danger) mb-2">{error}</p>
       )}
 
       <div className="space-y-2">
         {SKILL_KEYS.map((key) => (
           <div key={key} className="flex items-center gap-2">
-            <span className="text-xs font-medium w-16 text-[var(--color-text-secondary)]">
+            <span className="text-xs font-medium w-16 text-(--color-text-secondary)">
               {SKILL_LABELS[key]}
             </span>
             <input
@@ -54,7 +54,7 @@ export function GuestSkillEditor({ playerId, initialSkills, onClose, onSaved }: 
               onChange={(e) =>
                 setSkills((prev) => ({ ...prev, [key]: Number(e.target.value) }))
               }
-              className="flex-1 h-1.5 accent-[var(--color-primary)]"
+              className="flex-1 h-1.5 accent-(--color-primary)"
             />
             <span className="text-xs font-bold w-5 text-center">{skills[key]}</span>
           </div>

@@ -96,7 +96,7 @@ export function ExclusionList({ scheduleId, exclusions }: ExclusionListProps) {
               onChange={(e) => setReason(e.target.value)}
               placeholder="Ex: Vacances de Noël"
             />
-            {error && <p className="text-sm text-[var(--color-danger)]">{error}</p>}
+            {error && <p className="text-sm text-(--color-danger)">{error}</p>}
             <Button type="submit" size="sm" loading={isPending}>
               Ajouter
             </Button>
@@ -105,7 +105,7 @@ export function ExclusionList({ scheduleId, exclusions }: ExclusionListProps) {
       )}
 
       {exclusions.length === 0 && !showForm && (
-        <p className="text-sm text-[var(--color-text-secondary)]">
+        <p className="text-sm text-(--color-text-secondary)">
           Aucune exclusion définie.
         </p>
       )}
@@ -121,7 +121,7 @@ export function ExclusionList({ scheduleId, exclusions }: ExclusionListProps) {
                 )}
               </p>
               {exc.reason && (
-                <p className="text-xs text-[var(--color-text-secondary)] truncate">
+                <p className="text-xs text-(--color-text-secondary) truncate">
                   {exc.reason}
                 </p>
               )}
@@ -130,7 +130,7 @@ export function ExclusionList({ scheduleId, exclusions }: ExclusionListProps) {
               type="button"
               onClick={() => handleDelete(exc.id)}
               disabled={isPending}
-              className="text-[var(--color-danger)] hover:text-red-700 transition-colors p-1 shrink-0"
+              className="text-(--color-danger) hover:text-red-700 transition-colors p-1 shrink-0"
               title="Supprimer"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

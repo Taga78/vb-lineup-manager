@@ -251,8 +251,8 @@ export default function AttendPage() {
     return (
       <main className="min-h-dvh flex items-center justify-center px-4">
         <div className="flex flex-col items-center gap-3">
-          <Spinner className="h-8 w-8 text-[var(--color-primary)]" />
-          <p className="text-sm text-[var(--color-text-secondary)]">Chargement...</p>
+          <Spinner className="h-8 w-8 text-(--color-primary)" />
+          <p className="text-sm text-(--color-text-secondary)">Chargement...</p>
         </div>
       </main>
     )
@@ -275,11 +275,11 @@ export default function AttendPage() {
   const totalMembers = players.length
 
   return (
-    <main className="min-h-dvh bg-[var(--color-background)] px-4 pt-4 pb-8 safe-area-top max-w-lg md:max-w-2xl mx-auto">
+    <main className="min-h-dvh bg-(--color-background) px-4 pt-4 pb-8 safe-area-top max-w-lg md:max-w-2xl mx-auto">
       {/* Back link */}
       <Link
         href="/"
-        className="inline-flex items-center gap-1 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] mb-4"
+        className="inline-flex items-center gap-1 text-sm text-(--color-text-secondary) hover:text-(--color-text) mb-4"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -290,18 +290,18 @@ export default function AttendPage() {
       {/* Session header */}
       <div className="mb-6">
         <h1 className="text-xl font-bold mb-1">Présence</h1>
-        <p className="text-sm text-[var(--color-text-secondary)] capitalize">
+        <p className="text-sm text-(--color-text-secondary) capitalize">
           {formatDateFr(session.date)}
         </p>
         {session.label && (
-          <p className="text-sm text-[var(--color-text-secondary)]">{session.label}</p>
+          <p className="text-sm text-(--color-text-secondary)">{session.label}</p>
         )}
       </div>
 
       {/* Counter */}
       <Card className="mb-4">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-[var(--color-text-secondary)]">
+          <span className="text-sm font-medium text-(--color-text-secondary)">
             Joueurs présents
           </span>
           <Badge variant={presentCount > 0 ? 'success' : 'default'}>
@@ -332,7 +332,7 @@ export default function AttendPage() {
                   {isFirstOfLetter && (
                     <div
                       id={`letter-${currentLetter}`}
-                      className="text-xs font-bold text-[var(--color-text-secondary)] uppercase pt-2 pb-1 scroll-mt-4"
+                      className="text-xs font-bold text-(--color-text-secondary) uppercase pt-2 pb-1 scroll-mt-4"
                     >
                       {currentLetter}
                     </div>
@@ -341,7 +341,7 @@ export default function AttendPage() {
                     padding="sm"
                     className={`transition-colors cursor-pointer ${
                       isPresent
-                        ? 'border-[var(--color-success)]/50 bg-[var(--color-success)]/5'
+                        ? 'border-(--color-success)/50 bg-(--color-success)/5'
                         : ''
                     } ${isPendingPlayer ? 'opacity-70' : ''}`}
                     onClick={() => handleToggle(player.id, isPresent)}
@@ -359,8 +359,8 @@ export default function AttendPage() {
                       <div
                         className={`w-6 h-6 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
                           isPresent
-                            ? 'bg-[var(--color-success)] border-[var(--color-success)]'
-                            : 'border-[var(--color-border)] bg-[var(--color-surface)]'
+                            ? 'bg-(--color-success) border-(--color-success)'
+                            : 'border-(--color-border) bg-(--color-surface)'
                         }`}
                       >
                         {isPresent && (
@@ -391,7 +391,7 @@ export default function AttendPage() {
       {/* New guests just registered in this session */}
       {guestPlayers.filter((g) => newGuestIds.has(g.id) && presentPlayerIds.has(g.id)).length > 0 && (
         <div className="mt-4">
-          <h2 className="text-sm font-semibold text-[var(--color-text-secondary)] mb-2">
+          <h2 className="text-sm font-semibold text-(--color-text-secondary) mb-2">
             Nouveaux invités
           </h2>
           <div className="space-y-2">
@@ -401,10 +401,10 @@ export default function AttendPage() {
                 <Card
                   key={guest.id}
                   padding="sm"
-                  className="border-[var(--color-success)]/50 bg-[var(--color-success)]/5"
+                  className="border-(--color-success)/50 bg-(--color-success)/5"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-md bg-[var(--color-success)] border-2 border-[var(--color-success)] flex items-center justify-center flex-shrink-0">
+                    <div className="w-6 h-6 rounded-md bg-(--color-success) border-2 border-(--color-success) flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
@@ -423,7 +423,7 @@ export default function AttendPage() {
       {/* Returning guests (toggleable like members) */}
       {guestPlayers.filter((g) => !newGuestIds.has(g.id)).length > 0 && (
         <div className="mt-4">
-          <h2 className="text-sm font-semibold text-[var(--color-text-secondary)] mb-2">
+          <h2 className="text-sm font-semibold text-(--color-text-secondary) mb-2">
             Invités déjà venus
           </h2>
           <div className="space-y-2">
@@ -439,7 +439,7 @@ export default function AttendPage() {
                   padding="sm"
                   className={`transition-colors cursor-pointer ${
                     isPresent
-                      ? 'border-[var(--color-success)]/50 bg-[var(--color-success)]/5'
+                      ? 'border-(--color-success)/50 bg-(--color-success)/5'
                       : ''
                   } ${isPendingPlayer ? 'opacity-70' : ''}`}
                   onClick={() => handleToggle(guest.id, isPresent)}
@@ -456,8 +456,8 @@ export default function AttendPage() {
                     <div
                       className={`w-6 h-6 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
                         isPresent
-                          ? 'bg-[var(--color-success)] border-[var(--color-success)]'
-                          : 'border-[var(--color-border)] bg-[var(--color-surface)]'
+                          ? 'bg-(--color-success) border-(--color-success)'
+                          : 'border-(--color-border) bg-(--color-surface)'
                       }`}
                     >
                       {isPresent && (
@@ -497,7 +497,7 @@ export default function AttendPage() {
             <h2 className="text-sm font-semibold mb-3">Inscription invité(e)</h2>
 
             {guestError && (
-              <p className="text-sm text-[var(--color-danger)] mb-3">{guestError}</p>
+              <p className="text-sm text-(--color-danger) mb-3">{guestError}</p>
             )}
 
             {/* Nom */}
@@ -512,7 +512,7 @@ export default function AttendPage() {
                 onChange={(e) => setGuestName(e.target.value)}
                 maxLength={100}
                 placeholder="Prénom Nom"
-                className="w-full px-3 py-2 border border-[var(--color-border)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                className="w-full px-3 py-2 border border-(--color-border) rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-(--color-primary)"
               />
             </div>
 
@@ -527,8 +527,8 @@ export default function AttendPage() {
                     onClick={() => setGuestGender(g)}
                     className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
                       guestGender === g
-                        ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
-                        : 'bg-[var(--color-surface)] text-[var(--color-text)] border-[var(--color-border)] hover:opacity-80'
+                        ? 'bg-(--color-primary) text-white border-(--color-primary)'
+                        : 'bg-(--color-surface) text-(--color-text) border-(--color-border) hover:opacity-80'
                     }`}
                   >
                     {g === 'M' ? 'Homme' : 'Femme'}
@@ -549,8 +549,8 @@ export default function AttendPage() {
                       onClick={() => setGuestLevel(key)}
                       className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
                         guestLevel === key
-                          ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
-                          : 'bg-[var(--color-surface)] text-[var(--color-text)] border-[var(--color-border)] hover:opacity-80'
+                          ? 'bg-(--color-primary) text-white border-(--color-primary)'
+                          : 'bg-(--color-surface) text-(--color-text) border-(--color-border) hover:opacity-80'
                       }`}
                     >
                       {val.label}

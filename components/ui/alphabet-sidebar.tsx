@@ -49,8 +49,8 @@ export function AlphabetSidebar({ letters, idPrefix }: AlphabetSidebarProps) {
             onClick={() => scrollToLetter(letter)}
             className={`w-6 h-6 flex items-center justify-center text-[10px] font-bold rounded-full transition-colors ${
               activeLetter === letter
-                ? 'bg-[var(--color-primary)] text-white scale-125'
-                : 'text-[var(--color-primary)]'
+                ? 'bg-(--color-primary) text-white scale-125'
+                : 'text-(--color-primary)'
             }`}
           >
             {letter}
@@ -61,7 +61,7 @@ export function AlphabetSidebar({ letters, idPrefix }: AlphabetSidebarProps) {
       {/* Active letter overlay */}
       {activeLetter && (
         <div className="fixed inset-0 pointer-events-none flex items-center justify-center z-20">
-          <div className="w-16 h-16 rounded-2xl bg-[var(--color-primary)] text-white flex items-center justify-center text-3xl font-bold opacity-80">
+          <div className="w-16 h-16 rounded-2xl bg-(--color-primary) text-white flex items-center justify-center text-3xl font-bold opacity-80">
             {activeLetter}
           </div>
         </div>

@@ -20,9 +20,9 @@ const ToastContext = createContext<ToastContextValue | null>(null)
 let nextId = 0
 
 const typeStyles: Record<ToastType, string> = {
-  success: 'bg-[var(--color-success)]',
-  error: 'bg-[var(--color-danger)]',
-  info: 'bg-[var(--color-primary)]',
+  success: 'bg-(--color-success)',
+  error: 'bg-(--color-danger)',
+  info: 'bg-(--color-primary)',
 }
 
 export function ToastProvider({ children }: { children: ReactNode }) {

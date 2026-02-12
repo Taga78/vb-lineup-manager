@@ -38,13 +38,13 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-dvh flex items-center justify-center px-4 bg-[var(--color-background)]">
+    <main className="min-h-dvh flex items-center justify-center px-4 bg-(--color-background)">
       <div className="w-full max-w-sm">
         <h1 className="text-2xl font-bold text-center mb-6">VB Lineup Manager</h1>
 
         <Card>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <p className="text-sm text-[var(--color-text-secondary)] text-center">
+            <p className="text-sm text-(--color-text-secondary) text-center">
               Connectez-vous pour accéder à l&apos;espace staff.
             </p>
 
@@ -86,7 +86,7 @@ export default function LoginPage() {
               type="button"
               onClick={handleForgotPassword}
               disabled={isResetting}
-              className="text-sm text-[var(--color-primary)] hover:underline disabled:opacity-50"
+              className="text-sm text-(--color-primary) hover:underline disabled:opacity-50"
             >
               {isResetting ? 'Envoi en cours...' : 'Mot de passe oublié ?'}
             </button>

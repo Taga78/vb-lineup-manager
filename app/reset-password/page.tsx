@@ -35,13 +35,13 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <main className="min-h-dvh flex items-center justify-center px-4 bg-[var(--color-background)]">
+    <main className="min-h-dvh flex items-center justify-center px-4 bg-(--color-background)">
       <div className="w-full max-w-sm">
         <h1 className="text-2xl font-bold text-center mb-6">Nouveau mot de passe</h1>
 
         <Card>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <p className="text-sm text-[var(--color-text-secondary)] text-center">
+            <p className="text-sm text-(--color-text-secondary) text-center">
               Choisissez un nouveau mot de passe pour le compte staff.
             </p>
 

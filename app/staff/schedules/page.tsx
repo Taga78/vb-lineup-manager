@@ -38,7 +38,7 @@ export default async function SchedulesPage() {
         <div className="space-y-3">
           {schedules.map((s) => (
             <Link key={s.id} href={`/staff/schedules/${s.id}`} className="block">
-              <Card className="hover:border-[var(--color-primary)]/30 transition-colors">
+              <Card className="hover:border-(--color-primary)/30 transition-colors">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold">{s.label}</p>
@@ -52,7 +52,7 @@ export default async function SchedulesPage() {
                           </Badge>
                         ))}
                     </div>
-                    <p className="mt-1.5 text-sm text-[var(--color-text-secondary)]">
+                    <p className="mt-1.5 text-sm text-(--color-text-secondary)">
                       {s.session_time.slice(0, 5)} — {s.nb_courts_planned} terrain{s.nb_courts_planned > 1 ? 's' : ''}, {s.preferred_team_size}/equipe
                     </p>
                   </div>

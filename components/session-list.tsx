@@ -27,19 +27,19 @@ function SessionCard({ session }: { session: SessionWithCount }) {
   return (
     <Link href={`/staff/sessions/${session.id}`} className="block">
       <Card
-        className={`transition-colors hover:border-[var(--color-primary)]/30 ${
+        className={`transition-colors hover:border-(--color-primary)/30 ${
           session.is_open
-            ? 'border-[var(--color-success)] bg-[var(--color-success)]/5'
+            ? 'border-(--color-success) bg-(--color-success)/5'
             : ''
         }`}
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold capitalize text-[var(--color-text)]">
+            <p className="text-sm font-semibold capitalize text-(--color-text)">
               {formatDateFr(session.date)}
             </p>
             {session.label && (
-              <p className="mt-0.5 text-sm text-[var(--color-text-secondary)] truncate">
+              <p className="mt-0.5 text-sm text-(--color-text-secondary) truncate">
                 {session.label}
               </p>
             )}

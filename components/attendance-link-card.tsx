@@ -34,14 +34,14 @@ export function AttendanceLinkCard() {
   const url = getAttendUrl()
 
   return (
-    <Card className="mb-4 border-[var(--color-primary)]/30 bg-[var(--color-primary)]/5">
+    <Card className="mb-4 border-(--color-primary)/30 bg-(--color-primary)/5">
       <div className="flex items-start gap-3">
-        <svg className="w-5 h-5 text-[var(--color-primary)] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="w-5 h-5 text-(--color-primary) mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
         </svg>
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium mb-1">Lien de presence</p>
-          <p className="text-xs text-[var(--color-text-secondary)] mb-2">
+          <p className="text-xs text-(--color-text-secondary) mb-2">
             Lien permanent &mdash; imprimez le QR code une seule fois pour toute l&apos;annee.
           </p>
 
@@ -54,7 +54,7 @@ export function AttendanceLinkCard() {
           <div className="flex items-center gap-2 flex-wrap">
             <button
               onClick={handleCopy}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-(--color-primary) text-white hover:bg-(--color-primary-dark) transition-colors"
             >
               {copied ? (
                 <>
@@ -75,7 +75,7 @@ export function AttendanceLinkCard() {
 
             <Link
               href="/staff/qrcode"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium border border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium border border-(--color-primary) text-(--color-primary) hover:bg-(--color-primary)/10 transition-colors"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />

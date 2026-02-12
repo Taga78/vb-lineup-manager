@@ -82,7 +82,7 @@ export function RecurringScheduleForm({ schedule }: RecurringScheduleFormProps) 
         />
 
         <div>
-          <label className="block text-sm font-medium text-[var(--color-text-secondary)] mb-2">
+          <label className="block text-sm font-medium text-(--color-text-secondary) mb-2">
             Jours de la semaine
           </label>
           <DayPicker value={days} onChange={setDays} />
@@ -139,13 +139,13 @@ export function RecurringScheduleForm({ schedule }: RecurringScheduleFormProps) 
               type="checkbox"
               checked={isActive}
               onChange={(e) => setIsActive(e.target.checked)}
-              className="w-4 h-4 rounded border-[var(--color-border)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]"
+              className="w-4 h-4 rounded border-(--color-border) text-(--color-primary) focus:ring-(--color-primary)"
             />
             Planning actif
           </label>
         )}
 
-        {error && <p className="text-sm text-[var(--color-danger)]">{error}</p>}
+        {error && <p className="text-sm text-(--color-danger)">{error}</p>}
 
         <div className="flex gap-3">
           <Button type="submit" loading={isPending}>

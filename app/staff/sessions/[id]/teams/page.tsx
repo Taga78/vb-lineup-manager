@@ -24,7 +24,7 @@ export default async function TeamsPage({
       <div className="mb-6">
         <Link
           href={`/staff/sessions/${id}`}
-          className="inline-flex items-center gap-1 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors min-h-[44px]"
+          className="inline-flex items-center gap-1 text-sm text-(--color-text-secondary) hover:text-(--color-text) transition-colors min-h-[44px]"
         >
           &larr; Retour à la séance
         </Link>
@@ -32,11 +32,11 @@ export default async function TeamsPage({
 
       <div className="mb-6">
         <h1 className="text-2xl font-bold">Équipes</h1>
-        <p className="text-sm text-[var(--color-text-secondary)] capitalize mt-1">
+        <p className="text-sm text-(--color-text-secondary) capitalize mt-1">
           {formatDateFr(session.date)}
           {session.label && ` — ${session.label}`}
         </p>
-        <p className="text-sm text-[var(--color-text-secondary)] mt-0.5">
+        <p className="text-sm text-(--color-text-secondary) mt-0.5">
           {session.nb_courts_planned} terrain{session.nb_courts_planned > 1 ? 's' : ''} · {session.attendance_count} joueur{session.attendance_count !== 1 ? 's' : ''} présent{session.attendance_count !== 1 ? 's' : ''}
         </p>
       </div>

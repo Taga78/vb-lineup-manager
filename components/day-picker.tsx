@@ -27,8 +27,8 @@ export function DayPicker({ value, onChange }: DayPickerProps) {
             onClick={() => toggle(day)}
             className={`w-10 h-10 rounded-lg text-sm font-medium transition-colors ${
               selected
-                ? 'bg-[var(--color-primary)] text-white'
-                : 'bg-[var(--color-border)] text-[var(--color-text-secondary)] hover:bg-gray-200'
+                ? 'bg-(--color-primary) text-white'
+                : 'bg-(--color-border) text-(--color-text-secondary) hover:bg-gray-200'
             }`}
           >
             {DAYS_OF_WEEK_SHORT_FR[day]}

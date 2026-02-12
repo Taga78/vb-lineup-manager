@@ -42,7 +42,7 @@ export default async function ScheduleDetailPage({
           </div>
 
           <div>
-            <p className="text-sm text-[var(--color-text-secondary)]">Jours</p>
+            <p className="text-sm text-(--color-text-secondary)">Jours</p>
             <div className="flex flex-wrap gap-1.5 mt-1">
               {schedule.days_of_week
                 .slice()
@@ -57,26 +57,26 @@ export default async function ScheduleDetailPage({
 
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <p className="text-[var(--color-text-secondary)]">Heure</p>
+              <p className="text-(--color-text-secondary)">Heure</p>
               <p className="font-medium">{schedule.session_time.slice(0, 5)}</p>
             </div>
             <div>
-              <p className="text-[var(--color-text-secondary)]">Ouverture avant</p>
+              <p className="text-(--color-text-secondary)">Ouverture avant</p>
               <p className="font-medium">{schedule.open_before_minutes} min</p>
             </div>
             <div>
-              <p className="text-[var(--color-text-secondary)]">Terrains</p>
+              <p className="text-(--color-text-secondary)">Terrains</p>
               <p className="font-medium">{schedule.nb_courts_planned}</p>
             </div>
             <div>
-              <p className="text-[var(--color-text-secondary)]">Joueurs / equipe</p>
+              <p className="text-(--color-text-secondary)">Joueurs / equipe</p>
               <p className="font-medium">{schedule.preferred_team_size}</p>
             </div>
           </div>
 
           {schedule.session_label_template && (
             <div className="text-sm">
-              <p className="text-[var(--color-text-secondary)]">Libellé séance</p>
+              <p className="text-(--color-text-secondary)">Libellé séance</p>
               <p className="font-medium">{schedule.session_label_template}</p>
             </div>
           )}

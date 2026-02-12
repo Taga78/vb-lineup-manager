@@ -108,7 +108,7 @@ export function PlayerForm({ player, attendance }: PlayerFormProps) {
             >
               {skillLabel(Math.round(overall))}
             </span>
-            <span className="text-[10px] text-[var(--color-text-secondary)]">
+            <span className="text-[10px] text-(--color-text-secondary)">
               Moy. /10
             </span>
           </div>
@@ -122,7 +122,7 @@ export function PlayerForm({ player, attendance }: PlayerFormProps) {
             return (
               <div key={key} className="w-full">
                 <div className="flex items-center justify-between mb-2">
-                  <label htmlFor={key} className="text-sm font-medium text-[var(--color-text-secondary)]">
+                  <label htmlFor={key} className="text-sm font-medium text-(--color-text-secondary)">
                     {SKILL_LABELS[key]}
                   </label>
                   <span
@@ -132,7 +132,7 @@ export function PlayerForm({ player, attendance }: PlayerFormProps) {
                     {val}
                   </span>
                 </div>
-                <div className="rounded-xl bg-[var(--color-background)] border border-[var(--color-border)] px-3 py-3">
+                <div className="rounded-xl bg-(--color-background) border border-(--color-border) px-3 py-3">
                   <input
                     type="range"
                     id={key}
@@ -168,15 +168,15 @@ export function PlayerForm({ player, attendance }: PlayerFormProps) {
 
       {/* Attendance history — only in edit mode */}
       {isEdit && attendance && attendance.total > 0 && (
-        <div className="mt-6 pt-5 border-t border-[var(--color-border)]">
-          <h3 className="text-sm font-semibold text-[var(--color-text-secondary)] mb-3">
+        <div className="mt-6 pt-5 border-t border-(--color-border)">
+          <h3 className="text-sm font-semibold text-(--color-text-secondary) mb-3">
             Présences
           </h3>
           <p className="text-sm mb-3">
             <span className="font-semibold">{attendance.attended}/{attendance.total}</span>
             {' '}séances
             {' '}
-            <span className="text-[var(--color-text-secondary)]">
+            <span className="text-(--color-text-secondary)">
               ({attendance.total > 0 ? Math.round((attendance.attended / attendance.total) * 100) : 0}%)
             </span>
           </p>
@@ -184,9 +184,9 @@ export function PlayerForm({ player, attendance }: PlayerFormProps) {
             {(showAllSessions ? attendance.sessions : attendance.sessions.slice(0, 5)).map((session) => (
               <div
                 key={session.id}
-                className="flex items-center justify-between text-sm py-1.5 px-2 rounded-lg bg-[var(--color-background)]"
+                className="flex items-center justify-between text-sm py-1.5 px-2 rounded-lg bg-(--color-background)"
               >
-                <span className="text-[var(--color-text-secondary)]">
+                <span className="text-(--color-text-secondary)">
                   {formatDateFr(session.date)}
                   {session.label && ` — ${session.label}`}
                 </span>
@@ -199,7 +199,7 @@ export function PlayerForm({ player, attendance }: PlayerFormProps) {
           {attendance.sessions.length > 5 && !showAllSessions && (
             <button
               type="button"
-              className="mt-2 text-sm text-[var(--color-primary)] hover:underline"
+              className="mt-2 text-sm text-(--color-primary) hover:underline"
               onClick={() => setShowAllSessions(true)}
             >
               Tout afficher ({attendance.sessions.length} séances)
@@ -210,8 +210,8 @@ export function PlayerForm({ player, attendance }: PlayerFormProps) {
 
       {/* Danger zone — only in edit mode */}
       {isEdit && (
-        <div className="mt-6 pt-5 border-t border-[var(--color-border)]">
-          <h3 className="text-sm font-semibold text-[var(--color-text-secondary)] mb-3">
+        <div className="mt-6 pt-5 border-t border-(--color-border)">
+          <h3 className="text-sm font-semibold text-(--color-text-secondary) mb-3">
             Gestion du joueur
           </h3>
           <label className="flex items-center gap-2 text-sm cursor-pointer mb-3">

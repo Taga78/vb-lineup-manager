@@ -7,12 +7,12 @@ interface BadgeProps {
 }
 
 const variantStyles = {
-  default: 'bg-[var(--color-border)] text-[var(--color-text-secondary)]',
+  default: 'bg-(--color-border) text-(--color-text-secondary)',
   skill: 'bg-blue-100 text-blue-800',
   gender: 'bg-purple-100 text-purple-800',
-  success: 'bg-[color-mix(in_srgb,var(--color-success)_15%,white)] text-[var(--color-success)]',
-  warning: 'bg-[color-mix(in_srgb,var(--color-warning)_15%,white)] text-[var(--color-warning)]',
-  info: 'bg-[color-mix(in_srgb,var(--color-primary)_15%,white)] text-[var(--color-primary)]',
+  success: 'bg-[color-mix(in_srgb,var(--color-success)_15%,white)] text-(--color-success)',
+  warning: 'bg-[color-mix(in_srgb,var(--color-warning)_15%,white)] text-(--color-warning)',
+  info: 'bg-[color-mix(in_srgb,var(--color-primary)_15%,white)] text-(--color-primary)',
   'skill-level': '', // handled dynamically
 }
 

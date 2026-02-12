@@ -53,7 +53,7 @@ export function PlayerList({ players, attendanceCounts }: PlayerListProps) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <label className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)] cursor-pointer">
+        <label className="flex items-center gap-2 text-sm text-(--color-text-secondary) cursor-pointer">
           <input
             type="checkbox"
             checked={showInactive}
@@ -85,7 +85,7 @@ export function PlayerList({ players, attendanceCounts }: PlayerListProps) {
                   {isFirstOfLetter && (
                     <div
                       id={`players-letter-${currentLetter}`}
-                      className="text-xs font-bold text-[var(--color-text-secondary)] uppercase pt-2 pb-1 scroll-mt-4"
+                      className="text-xs font-bold text-(--color-text-secondary) uppercase pt-2 pb-1 scroll-mt-4"
                     >
                       {currentLetter}
                     </div>
