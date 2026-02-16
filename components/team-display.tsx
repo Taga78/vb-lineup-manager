@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useTransition, useMemo, useCallback } from 'react'
+import { useState, useTransition, useMemo, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { generateAndSaveTeams, swapPlayers, type SavedTeam, type TeamPlayerInfo } from '@/lib/actions/teams'
+import { generateAndSaveTeams, swapPlayers, type SavedTeam } from '@/lib/actions/teams'
 import { getGuestsForSession } from '@/lib/actions/attendance'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -10,32 +10,12 @@ import { Button } from '@/components/ui/button'
 import { EmptyState } from '@/components/ui/empty-state'
 import { SkillRadar } from '@/components/ui/skill-radar'
 import { useToast } from '@/components/ui/toast'
-import { skillColor, overallSkill } from '@/lib/utils'
-import { SKILL_KEYS, SKILL_LABELS, type SkillKey, type TeamSkillAverages } from '@/lib/types'
+import { skillColor, overallSkill, computeTeamAvgSkills } from '@/lib/utils'
+import { SKILL_LABELS, type SkillKey } from '@/lib/types'
 
 interface TeamDisplayProps {
   sessionId: string
   teams: SavedTeam[]
-}
-
-function computeTeamAvgSkills(players: TeamPlayerInfo[]): TeamSkillAverages {
-  if (players.length === 0) {
-    return { skill_service: 0, skill_pass: 0, skill_attack: 0, skill_defense: 0, overall: 0 }
-  }
-  const avgs = {} as Record<string, number>
-  let totalSum = 0
-  for (const key of SKILL_KEYS) {
-    const sum = players.reduce((acc, p) => acc + p[key], 0)
-    avgs[key] = Math.round((sum / players.length) * 10) / 10
-    totalSum += avgs[key]
-  }
-  return {
-    skill_service: avgs.skill_service,
-    skill_pass: avgs.skill_pass,
-    skill_attack: avgs.skill_attack,
-    skill_defense: avgs.skill_defense,
-    overall: Math.round((totalSum / SKILL_KEYS.length) * 10) / 10,
-  }
 }
 
 export function TeamDisplay({ sessionId, teams: initialTeams }: TeamDisplayProps) {
@@ -55,7 +35,7 @@ export function TeamDisplay({ sessionId, teams: initialTeams }: TeamDisplayProps
   const teams = editMode ? localTeams : initialTeams
 
   // Reset local state when initialTeams change from server
-  useMemo(() => {
+  useEffect(() => {
     setLocalTeams(initialTeams)
   }, [initialTeams])
 
