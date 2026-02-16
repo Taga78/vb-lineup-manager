@@ -14,6 +14,8 @@ export type SessionWithCount = {
   created_at: string
   created_by: string | null
   recurring_schedule_id: string | null
+  type: 'TRAINING' | 'TOURNAMENT'
+  format: unknown
   attendance_count: number
 }
 
@@ -48,6 +50,8 @@ export async function getSessions(): Promise<{
       created_at: s.created_at,
       created_by: s.created_by,
       recurring_schedule_id: s.recurring_schedule_id,
+      type: s.type,
+      format: s.format,
       attendance_count: countArr?.[0]?.count ?? 0,
     }
   })
@@ -92,6 +96,8 @@ export async function getSession(id: string): Promise<{
       created_at: session.created_at,
       created_by: session.created_by,
       recurring_schedule_id: session.recurring_schedule_id,
+      type: session.type,
+      format: session.format,
       attendance_count: count ?? 0,
     },
     error: null,

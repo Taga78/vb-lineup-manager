@@ -37,6 +37,31 @@ export const GUEST_LEVELS = {
 
 export type GuestLevel = keyof typeof GUEST_LEVELS
 
+export type SessionType = 'TRAINING' | 'TOURNAMENT'
+export type TournamentMode = 'CLASSIC' | 'KOTH'
+export type MatchStatus = 'SCHEDULED' | 'IN_PROGRESS' | 'FINISHED'
+
+export interface MatchConfig {
+  sets: number
+  points: number
+  win_by_two: boolean
+}
+
+export interface ClassicTournamentFormat {
+  mode: 'CLASSIC'
+  pool_config: MatchConfig
+  playoff_config: MatchConfig & { tie_break_points: number }
+  num_pools: number
+  qualifiers_per_pool: number
+}
+
+export interface KothTournamentFormat {
+  mode: 'KOTH'
+  match_config: MatchConfig
+}
+
+export type TournamentFormat = ClassicTournamentFormat | KothTournamentFormat
+
 export interface Session {
   id: string
   date: string
@@ -45,6 +70,35 @@ export interface Session {
   preferred_team_size: number
   is_open: boolean
   recurring_schedule_id: string | null
+  type: SessionType
+  format: TournamentFormat | null
+}
+
+export interface Match {
+  id: string
+  session_id: string
+  team_a_id: string | null
+  team_b_id: string | null
+  score_a: number | null
+  score_b: number | null
+  winner_id: string | null
+  round: string
+  court_number: number
+  status: MatchStatus
+  match_order: number
+}
+
+export interface Standing {
+  id: string
+  session_id: string
+  player_id: string | null
+  team_id: string | null
+  points: number
+  matches_played: number
+  wins: number
+  losses: number
+  points_diff: number
+  rank: number | null
 }
 
 // Jours de la semaine ISO (1=Lundi..7=Dimanche)

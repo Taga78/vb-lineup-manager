@@ -60,6 +60,80 @@ export type Database = {
           },
         ]
       }
+      matches: {
+        Row: {
+          court_number: number
+          created_at: string
+          id: string
+          match_order: number
+          round: string
+          score_a: number | null
+          score_b: number | null
+          session_id: string
+          status: Database["public"]["Enums"]["match_status"]
+          team_a_id: string | null
+          team_b_id: string | null
+          winner_id: string | null
+        }
+        Insert: {
+          court_number?: number
+          created_at?: string
+          id?: string
+          match_order?: number
+          round: string
+          score_a?: number | null
+          score_b?: number | null
+          session_id: string
+          status?: Database["public"]["Enums"]["match_status"]
+          team_a_id?: string | null
+          team_b_id?: string | null
+          winner_id?: string | null
+        }
+        Update: {
+          court_number?: number
+          created_at?: string
+          id?: string
+          match_order?: number
+          round?: string
+          score_a?: number | null
+          score_b?: number | null
+          session_id?: string
+          status?: Database["public"]["Enums"]["match_status"]
+          team_a_id?: string | null
+          team_b_id?: string | null
+          winner_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "matches_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matches_team_a_id_fkey"
+            columns: ["team_a_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matches_team_b_id_fkey"
+            columns: ["team_b_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matches_winner_id_fkey"
+            columns: ["winner_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       players: {
         Row: {
           created_at: string
@@ -225,34 +299,40 @@ export type Database = {
           created_at: string
           created_by: string | null
           date: string
+          format: Json | null
           id: string
           is_open: boolean
           label: string | null
           nb_courts_planned: number
           preferred_team_size: number
           recurring_schedule_id: string | null
+          type: Database["public"]["Enums"]["session_type"]
         }
         Insert: {
           created_at?: string
           created_by?: string | null
           date: string
+          format?: Json | null
           id?: string
           is_open?: boolean
           label?: string | null
           nb_courts_planned: number
           preferred_team_size: number
           recurring_schedule_id?: string | null
+          type?: Database["public"]["Enums"]["session_type"]
         }
         Update: {
           created_at?: string
           created_by?: string | null
           date?: string
+          format?: Json | null
           id?: string
           is_open?: boolean
           label?: string | null
           nb_courts_planned?: number
           preferred_team_size?: number
           recurring_schedule_id?: string | null
+          type?: Database["public"]["Enums"]["session_type"]
         }
         Relationships: [
           {
@@ -267,6 +347,73 @@ export type Database = {
             columns: ["recurring_schedule_id"]
             isOneToOne: false
             referencedRelation: "recurring_schedules"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      standings: {
+        Row: {
+          created_at: string
+          id: string
+          losses: number
+          matches_played: number
+          player_id: string | null
+          points: number
+          points_diff: number
+          rank: number | null
+          session_id: string
+          team_id: string | null
+          updated_at: string
+          wins: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          losses?: number
+          matches_played?: number
+          player_id?: string | null
+          points?: number
+          points_diff?: number
+          rank?: number | null
+          session_id: string
+          team_id?: string | null
+          updated_at?: string
+          wins?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          losses?: number
+          matches_played?: number
+          player_id?: string | null
+          points?: number
+          points_diff?: number
+          rank?: number | null
+          session_id?: string
+          team_id?: string | null
+          updated_at?: string
+          wins?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "standings_player_id_fkey"
+            columns: ["player_id"]
+            isOneToOne: false
+            referencedRelation: "players"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "standings_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "standings_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
             referencedColumns: ["id"]
           },
         ]
@@ -344,7 +491,8 @@ export type Database = {
       process_recurring_schedules: { Args: never; Returns: undefined }
     }
     Enums: {
-      [_ in never]: never
+      match_status: "SCHEDULED" | "IN_PROGRESS" | "FINISHED"
+      session_type: "TRAINING" | "TOURNAMENT"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -471,6 +619,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      match_status: ["SCHEDULED", "IN_PROGRESS", "FINISHED"],
+      session_type: ["TRAINING", "TOURNAMENT"],
+    },
   },
 } as const
