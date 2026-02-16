@@ -6,7 +6,7 @@
  * - KOTH (King of the Hill) : Matchs successifs avec classement individuel
  */
 
-import type { Match, Standing, MatchStatus } from '@/lib/types'
+import type { Match, MatchStatus } from '@/lib/types'
 
 // ---------------------------------------------------------------------------
 // Types internes
@@ -236,8 +236,7 @@ export function generateCrossPoolPairings(
  */
 export function generateKothTeamAssignments(
   playerIds: string[],
-  numCourts: number,
-  preferredTeamSize: number
+  numCourts: number
 ): string[][] {
   // Mélanger les joueurs
   const shuffled = [...playerIds]

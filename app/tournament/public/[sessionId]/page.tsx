@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { formatDateFr } from '@/lib/utils'
 import type { Match, Standing, TournamentFormat } from '@/lib/types'
