@@ -101,6 +101,14 @@ export default async function SessionDetailPage({
           <GenerateTeamsButton sessionId={session.id} />
         </div>
 
+        {session.type === 'TOURNAMENT' && (
+          <Link href={`/staff/sessions/${session.id}/tournament`}>
+            <Button variant="primary" className="w-full">
+              Dashboard Tournoi
+            </Button>
+          </Link>
+        )}
+
         <SessionDeleteButton sessionId={session.id} />
       </div>
 

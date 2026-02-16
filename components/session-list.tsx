@@ -45,6 +45,9 @@ function SessionCard({ session }: { session: SessionWithCount }) {
             )}
 
             <div className="mt-2 flex flex-wrap items-center gap-2">
+              {session.type === 'TOURNAMENT' && (
+                <Badge variant="info">Tournoi</Badge>
+              )}
               {session.recurring_schedule_id && (
                 <Badge variant="info">Auto</Badge>
               )}
