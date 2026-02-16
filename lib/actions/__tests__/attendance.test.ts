@@ -147,7 +147,7 @@ describe('registerGuest', () => {
   })
 
   it('rejects invalid level', async () => {
-    const result = await registerGuest('session-1', 'John Doe', 'M', 'expert' as any)
+    const result = await registerGuest('session-1', 'John Doe', 'M', 'expert' as unknown as Parameters<typeof registerGuest>[3])
     expect(result.success).toBe(false)
     expect(result.error).toContain('Niveau invalide')
   })
