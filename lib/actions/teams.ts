@@ -1,10 +1,21 @@
 'use server'
 
+/**
+ * Server Actions — Génération et gestion des équipes.
+ *
+ * Responsabilités :
+ * - Générer des équipes équilibrées à partir des joueurs présents
+ * - Sauvegarder les équipes en base (tables `teams` + `team_players`)
+ * - Permettre l'échange manuel de joueurs entre équipes
+ * - Construire l'historique de co-équipiers pour l'algorithme
+ */
+
 import { createClient } from '@/lib/supabase/server'
 import { requireAuth } from '@/lib/auth'
 import { revalidatePath } from 'next/cache'
 import { generateTeams, type CooccurrenceMap } from '@/lib/algorithms/team-generator'
-import { SKILL_KEYS, type Player, type TeamSkillAverages } from '@/lib/types'
+import { type Player, type TeamSkillAverages } from '@/lib/types'
+import { computeTeamAvgSkills } from '@/lib/utils'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -61,11 +72,13 @@ type TeamPlayerRow = {
 // Co-occurrence history
 // ---------------------------------------------------------------------------
 
+/** Nombre de séances passées à considérer pour l'historique de co-équipiers */
 const MAX_RECENT_SESSIONS = 8
 
 /**
- * Build a co-occurrence map: for each pair of present players, count how many
- * times they were on the same team in recent sessions.
+ * Construit une carte de co-occurrence : pour chaque paire de joueurs présents,
+ * compte combien de fois ils ont été dans la même équipe lors des dernières séances.
+ * Cet historique est utilisé par l'algorithme pour varier les compositions.
  */
 async function getRecentCooccurrences(
   sessionId: string,
@@ -364,26 +377,6 @@ export async function swapPlayers(
 // Fetch existing teams
 // ---------------------------------------------------------------------------
 
-function computeAvgSkills(players: TeamPlayerInfo[]): TeamSkillAverages {
-  if (players.length === 0) {
-    return { skill_service: 0, skill_pass: 0, skill_attack: 0, skill_defense: 0, overall: 0 }
-  }
-  const avgs = {} as Record<string, number>
-  let totalSum = 0
-  for (const key of SKILL_KEYS) {
-    const sum = players.reduce((acc, p) => acc + p[key], 0)
-    avgs[key] = Math.round((sum / players.length) * 10) / 10
-    totalSum += avgs[key]
-  }
-  return {
-    skill_service: avgs.skill_service,
-    skill_pass: avgs.skill_pass,
-    skill_attack: avgs.skill_attack,
-    skill_defense: avgs.skill_defense,
-    overall: Math.round((totalSum / SKILL_KEYS.length) * 10) / 10,
-  }
-}
-
 export async function hasTeamsForSession(sessionId: string): Promise<boolean> {
   const supabase = await createClient()
   const { count } = await supabase
@@ -450,7 +443,7 @@ export async function getGeneratedTeams(
       court_number: team.court_number,
       name: team.name,
       players,
-      avgSkills: computeAvgSkills(players),
+      avgSkills: computeTeamAvgSkills(players),
     }
   })
 
